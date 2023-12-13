@@ -14,3 +14,12 @@ The results of this experiment are documented in [Result](./result/), including:
   - The `edu` folder contains the raw data for the online homework grading system.
     - `details.log`: Records the tail latency distribution from 10 to 100;
     - `overview.out`: Statistics of throughput and the 90th percentile tail latency.
+
+## Source Code
+ The source code of the PerfCal compiler is documented in [src](./src/). The folder lists the source code of the PerfCal compiler. 
+ including:
+ - The `go` folder contains the source code of the PerfCal compiler for converting the PerfCal to Go code.
+ - The `tla` folder contains the source code of the PerfCal compiler for converting the PerfCal to TLA+ code.
+ - The `perfcal.lark` file is the grammar file of the PerfCal. It is used by the PerfCal tool to parse the PerfCal. The grammar file is written in [Lark](https://github.com/lark-parser/lark）, a parsing library in Python.
+
+The PerfCal compiler can support the conversion from PerfCal to Go and TLA+. Due to time constraints, the format of this project still needs to be further optimized, we will continue to improve the PerfCal compiler, including: 1. Add more English comments; 2. Delete redundant logic; 3. Uniform code format, etc.; 4. Optimize the code structure to make it easier to read and maintain.

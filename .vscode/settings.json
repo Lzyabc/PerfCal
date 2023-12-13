@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.scala": "scala",
+        "*.hd": "python",
+        "*.ttml": "xml",
+        "*.ttss": "css"
+    }
+}
