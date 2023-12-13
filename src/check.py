@@ -61,7 +61,7 @@ class Model:
         
 
     def save(self):
-        # 把生成的代码保持到指定路径中
+        # Save the generated code to the specified path
         with open(self.file_path, "w") as f:
             f.write(self.profiles)
 
