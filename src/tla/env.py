@@ -994,7 +994,7 @@ class ShiftExpr(Term):
     def __init__(self, data, m=None) -> None:
         super().__init__(data)
 
-class Factor(ProfileObject):
+class FThreadpool(ProfileObject):
     def __init__(self, data, m=None) -> None:
         try:
             self.op = data[0].value

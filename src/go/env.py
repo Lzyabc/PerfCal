@@ -35,7 +35,7 @@ PERFORMANCE_VARS = [
 UTIL_FUNC = {
     "Append": "append",
     "print": "// fmt.Println",
-    "Actor": "stdp.Actor",
+    "Threadpool": "stdp.Threadpool",
     "Len": "len",
 }
 
@@ -1292,8 +1292,8 @@ class FuncDef(ProfileObject):
         analyze(self.suite, context)
         self.func_name = f"{self.prefix}{capitalize(convert(self.name))}"
         self.call_func_name = f"{self.profile.defaultProfileStateInstance()}.{self.prefix}{capitalize(convert(self.name))}"
-        self.actor_name = f"{self.prefix}Actor{capitalize(convert(self.name))}"
-        self.call_actor_name = f"{self.profile.defaultProfileStateInstance()}.{self.prefix}Actor{capitalize(convert(self.name))}"
+        self.Threadpool_name = f"{self.prefix}Threadpool{capitalize(convert(self.name))}"
+        self.call_Threadpool_name = f"{self.profile.defaultProfileStateInstance()}.{self.prefix}Threadpool{capitalize(convert(self.name))}"
         context.exit_func()
 
     def get_suite_statements(self):
@@ -1355,8 +1355,8 @@ class FuncDef(ProfileObject):
         target = ""
         func_def = self.convertFunc(inputs, outputs)
         target += func_def + "\n\n"
-        actor_def = self.convertActor(inputs, outputs)
-        target += actor_def
+        Threadpool_def = self.convertThreadpool(inputs, outputs)
+        target += Threadpool_def
         return target
     
     def sig_convert(self, inputs, outputs):
@@ -1387,11 +1387,11 @@ class FuncDef(ProfileObject):
         return target
     
 
-    def convertActor(self, inputs, outputs, indent=indent):
+    def convertThreadpool(self, inputs, outputs, indent=indent):
         ins = ""
         if self.profile != None:
             ins = f"({self.profile.defaultProfileStateInstance()} *{self.profile.defaultProfileState()})"
-        target = f"{self.def_type} {ins} {self.actor_name}(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{{}}, outputs chan []interface{{}})  {{\n"
+        target = f"{self.def_type} {ins} {self.Threadpool_name}(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{{}}, outputs chan []interface{{}})  {{\n"
         
         with indent:
             target += indent(
@@ -1667,7 +1667,7 @@ class ShiftExpr(Term):
     def __init__(self, data, m=None) -> None:
         super().__init__(data)
 
-class Factor(ProfileObject):
+class FThreadpool(ProfileObject):
     def __init__(self, data, m=None) -> None:
         # print(data)
         try:
@@ -2069,13 +2069,13 @@ class FuncCall(ProfileObject):
                 target = "_ = " + ', '.join(convert(self.args))
             elif func_name in UTIL_FUNC:
                 args_name = ', '.join(convert(self.args))
-                if func_name == "Actor":
+                if func_name == "Threadpool":
                     if self.profile != None:
-                        args_name = "ienv, " + f"{self.profile.defaultProfileStateInstance()}.{self.profile.get_name()}" + "Actor" + capitalize(args_name)
+                        args_name = "ienv, " + f"{self.profile.defaultProfileStateInstance()}.{self.profile.get_name()}" + "Threadpool" + capitalize(args_name)
                 func_name = UTIL_FUNC[func_name]
                 target = f"{func_name}({args_name})"
             elif checkRecv(func_name):
-                f_name = func_name.split(".")[0].split("Actor")[0]
+                f_name = func_name.split(".")[0].split("Threadpool")[0]
                 # f = self.libs[f_name]
                 if fn == None:
                     target = f"{func_name}({', '.join(convert(self.args))})" 

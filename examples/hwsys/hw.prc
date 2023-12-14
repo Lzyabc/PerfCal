@@ -108,7 +108,7 @@ profile AServer(self, net, json, fileSystem) {
         #@type string {
             answer = ""
         #}
-        computeScoreActor = Actor(computeScore)
+        computeScoreThreadpool = Threadpool(computeScore)
         #@type ReqMsg
         req = {}
         #@type QAnswer {
@@ -125,7 +125,7 @@ profile AServer(self, net, json, fileSystem) {
             fileSystem.read(answer, req.Path)
             json.read(stdAnswer, "load", answer, stdAnswer)
             .computeScore
-            computeScoreActor.Send(studentResponse, stdAnswer, req.Client_id, req.Request_id)
+            computeScoreThreadpool.Send(studentResponse, stdAnswer, req.Client_id, req.Request_id)
         }
     }
 

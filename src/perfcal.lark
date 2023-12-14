@@ -186,8 +186,8 @@ star_expr: "*" expr
 ?and_expr: shift_expr ("&" shift_expr)*
 ?shift_expr: arith_expr (_shift_op arith_expr)*
 ?arith_expr: term (_add_op term)*
-?term: factor (_mul_op factor)*
-?factor: _unary_op factor | power
+?term: fThreadpool (_mul_op fThreadpool)*
+?fThreadpool: _unary_op fThreadpool | power
 
 !_unary_op: "+"|"-"|"~"|"SUBSET"|"DOMAIN"
 !_add_op: "+"|"-"
@@ -205,7 +205,7 @@ quantifier_item: quantifier_op name | quantifier_op name ("," name)* "in" test |
 ?condition: test_nocond ("," test_nocond)?
 
 
-?power: await_expr ("**" factor)?
+?power: await_expr ("**" fThreadpool)?
 ?await_expr: AWAIT? atom_expr
 AWAIT: "await"
 

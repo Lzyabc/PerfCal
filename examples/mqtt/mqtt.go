@@ -207,7 +207,7 @@ func (APublisherIns *APublisherState) APublisherPublish(ienv stdp.PInterface, re
 
 }
 
-func (APublisherIns *APublisherState) APublisherActorPublish(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
+func (APublisherIns *APublisherState) APublisherThreadpoolPublish(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
 	for {
 		select {
 		case <-ctrl:
@@ -236,7 +236,7 @@ func (APublisherIns *APublisherState) APublisherInit(ienv stdp.PInterface) (err 
 	return
 }
 
-func (APublisherIns *APublisherState) APublisherActorInit(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
+func (APublisherIns *APublisherState) APublisherThreadpoolInit(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
 	for {
 		output := []interface{}{}
 		select {
@@ -268,7 +268,7 @@ func (ASubscriberIns *ASubscriberState) ASubscriberInit(ienv stdp.PInterface) (e
 	return
 }
 
-func (ASubscriberIns *ASubscriberState) ASubscriberActorInit(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
+func (ASubscriberIns *ASubscriberState) ASubscriberThreadpoolInit(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
 	for {
 		output := []interface{}{}
 		select {
@@ -341,7 +341,7 @@ func (ASubscriberIns *ASubscriberState) ASubscriberSubscribe(ienv stdp.PInterfac
 	return
 }
 
-func (ASubscriberIns *ASubscriberState) ASubscriberActorSubscribe(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
+func (ASubscriberIns *ASubscriberState) ASubscriberThreadpoolSubscribe(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
 	for {
 		select {
 		case <-ctrl:
@@ -372,7 +372,7 @@ func (ABrokerIns *ABrokerState) ABrokerInit(ienv stdp.PInterface) (err error) {
 	return
 }
 
-func (ABrokerIns *ABrokerState) ABrokerActorInit(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
+func (ABrokerIns *ABrokerState) ABrokerThreadpoolInit(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
 	for {
 		output := []interface{}{}
 		select {

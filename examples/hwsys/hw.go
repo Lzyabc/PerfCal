@@ -49,7 +49,7 @@ func (AServerIns *AServerState) AServerSaveFS(ienv stdp.PInterface, clientID int
 	ienv.Write("lock", "Release")
 }
 
-func (AServerIns *AServerState) AServerActorSaveFS(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
+func (AServerIns *AServerState) AServerThreadpoolSaveFS(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
 	for {
 		select {
 		case <-ctrl:
@@ -109,7 +109,7 @@ func (AServerIns *AServerState) AServerComputeScore(ienv stdp.PInterface, studen
 	return
 }
 
-func (AServerIns *AServerState) AServerActorComputeScore(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
+func (AServerIns *AServerState) AServerThreadpoolComputeScore(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
 	for {
 		select {
 		case <-ctrl:
@@ -131,7 +131,7 @@ func (AServerIns *AServerState) AServerInit(ienv stdp.PInterface) (err error) {
 	return
 }
 
-func (AServerIns *AServerState) AServerActorInit(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
+func (AServerIns *AServerState) AServerThreadpoolInit(ienv stdp.PInterface, ctrl chan int, inputs chan []interface{}, outputs chan []interface{}) {
 	for {
 		output := []interface{}{}
 		select {
@@ -249,7 +249,7 @@ func (AServerIns *AServerState) AServerMain(ienv stdp.PInterface) (err error) {
 	}
 	id := int(globalSelf120.AsNumber())
 	answer := string("")
-	computeScoreActor := stdp.Actor(ienv, AServerIns.AServerActorComputeScore)
+	computeScoreThreadpool := stdp.Threadpool(ienv, AServerIns.AServerThreadpoolComputeScore)
 	req := ReqMsg{}
 	studentResponse := QAnswer{}
 	stdAnswer := QAnswer{}
@@ -302,7 +302,7 @@ func (AServerIns *AServerState) AServerMain(ienv stdp.PInterface) (err error) {
 		}
 
 		stdAnswer = globalJson142.AsStruct().(QAnswer)
-		computeScoreActor.Send(studentResponse, stdAnswer, req.Client_id, req.Request_id)
+		computeScoreThreadpool.Send(studentResponse, stdAnswer, req.Client_id, req.Request_id)
 	}
 	return
 }
