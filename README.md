@@ -1,4 +1,10 @@
 # PerfCal
+## Overview
+  PerfCal is  a specification language designed to generate efficient distributed systems while maintaining simplicity and correctness.  Developers first write a PerfCal specification suitable for model checking. The specification will be converted to TLA+ code to verify the correctness of the specification. The specification can then be transferred to a relaxed specification suited for implementatio by relaxing the atomicity of relaxable steps. The specification will be converted to Go code to implement the specification. 
+
+  Due to time constraints, the format of this project still needs to be further optimized, we will continue to improve the PerfCal compiler, including: 1. Add more English comments; 2. Delete redundant logic; 3. Uniform code format, etc.; 4. Optimize the code structure to make it easier to read and maintain.
+
+
 ## Result
 The results of this experiment are documented in [Result](./result/), including:
 - The [raw data](./result/raw) from this experiment
@@ -22,4 +28,9 @@ The results of this experiment are documented in [Result](./result/), including:
  - The `tla` folder contains the source code of the PerfCal compiler for converting the PerfCal to TLA+ code.
  - The `perfcal.lark` file is the grammar file of the PerfCal. It is used by the PerfCal tool to parse the PerfCal. The grammar file is written in [Lark](https://github.com/lark-parser/lark）, a parsing library in Python.
 
-The PerfCal compiler can support the conversion from PerfCal to Go and TLA+. Due to time constraints, the format of this project still needs to be further optimized, we will continue to improve the PerfCal compiler, including: 1. Add more English comments; 2. Delete redundant logic; 3. Uniform code format, etc.; 4. Optimize the code structure to make it easier to read and maintain.
+
+## License
+
+This project is licensed under the Apache License 2.0 - see the [LICENSE](LICENSE) file for details.
+
+For a copy of the Apache License 2.0, see [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0).
