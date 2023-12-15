@@ -14,8 +14,6 @@ profile APublisher(self, QoS, net, instream, outstream, log) {
     func Publish(reqMsg) {
          #@type Message
         respMsg = {}
-        
-
         if reqMsg.QoS == 0 {
             net.write(reqMsg, BrokerID, "publish")
         } elif reqMsg.QoS == 1 {
