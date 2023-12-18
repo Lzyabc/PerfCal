@@ -1,6 +1,6 @@
 # PerfCal
 ## Overview
-  PerfCal  <img src="LOGO.svg" alt="alt text" width="60">is a specification language, based on TLA+ and PlusCal, designed to generate efficient distributed systems while maintaining simplicity and correctness.  Developers first write a PerfCal specification suitable for model checking. The specification will be converted to TLA+ code to verify the correctness of the specification. The specification can then be transferred to a relaxed specification suited for implementatio by relaxing the atomicity of relaxable steps. The specification will be converted to Go code to implement the specification. 
+  PerfCal is a specification language, based on TLA+ and PlusCal, designed to generate efficient distributed systems while maintaining simplicity and correctness.  Developers first write a PerfCal specification suitable for model checking. The specification will be converted to TLA+ code to verify the correctness of the specification. The specification can then be transferred to a relaxed specification suited for implementatio by relaxing the atomicity of relaxable steps. The specification will be converted to Go code to implement the specification. 
 
   PerfCal used the open source libraries from [PGo](https://github.com/DistCompiler/pgo). PGo offers a generation and execution architecture that ensures consistency between the implementation and design. PerfCal follows PGo's approach to maintain consistency between the implementation and design. PerfCal extends these concepts by introducing new abstractions specifically designed to improve performance and enable the generation of efficient system implementations. PerfCal differs from PGo in three key aspects: 1. We introduce a new Go-like language with a compiler and new abstractions like relaxable atomic steps, specification context, and thread pool; 2. PerfCal creates implementations from a relaxed specification; 3. Unlike MPCal's limitations, PerfCal can specify dynamic multithreaded systems.
 
@@ -8,6 +8,8 @@
 
   PerfCal's logo is a cartoon peregrine falcon, a bird known for its speed and agility. 
 
+ <img src="LOGO.svg" alt="alt text" width="200">
+ 
 ## Result
 The results of this experiment are documented in [Result](./result/), including:
 - The [raw data](./result/raw) from this experiment
