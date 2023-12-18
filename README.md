@@ -6,10 +6,10 @@
 
   Due to time constraints, the format of this project still needs to be further optimized, we will continue to improve the PerfCal compiler, including: 1. Add more English comments; 2. Delete redundant logic; 3. Uniform code format, etc.; 4. Optimize the code structure to make it easier to read and maintain.
 
-  PerfCal's logo is a cartoon peregrine falcon, a bird known for its speed and agility. 
+  PerfCal's logo is a hand-drawn cartoon peregrine falcon, a bird known for its speed and agility. 
 
- <img src="LOGO.svg" alt="alt text" width="200">
- 
+ <img src="LOGO.svg" alt="alt text" width="300">
+
 ## Result
 The results of this experiment are documented in [Result](./result/), including:
 - The [raw data](./result/raw) from this experiment
