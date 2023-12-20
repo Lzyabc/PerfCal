@@ -29,8 +29,8 @@ The results of this experiment are documented in [Result](./result/), including:
 ## Source Code
  The source code of the PerfCal compiler is documented in [src](./src/). The folder lists the source code of the PerfCal compiler. 
  including:
- - The `go` folder contains the source code of the PerfCal compiler for converting the PerfCal to Go code.
- - The `tla` folder contains the source code of the PerfCal compiler for converting the PerfCal to TLA+ code.
+ - The `go` folder contains the source code for converting the PerfCal to Go code.
+ - The `tla` folder contains the source code for converting the PerfCal to TLA+ code.
  - The `perfcal.lark` file is the grammar file of the PerfCal. It is used by the PerfCal tool to parse the PerfCal. The grammar file is written in [Lark](https://github.com/lark-parser/lark), a parsing library in Python.
 
 ## Usage [TODO]
