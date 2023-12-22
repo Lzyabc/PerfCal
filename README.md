@@ -29,11 +29,13 @@ The results of this experiment are documented in [Result](./result/), including:
 ## Source Code
  The source code of the PerfCal compiler is documented in [src](./src/). The folder lists the source code of the PerfCal compiler. 
  including:
- - The `go` folder contains the source code for converting the PerfCal to Go code.
- - The `tla` folder contains the source code for converting the PerfCal to TLA+ code.
- - The `perfcal.lark` file is the grammar file of the PerfCal. It is used by the PerfCal tool to parse the PerfCal. The grammar file is written in [Lark](https://github.com/lark-parser/lark), a parsing library in Python.
+ - The `go` folder contains the source code for converting the PerfCal to Go code. The core of the PerfCal-Go Compiler is env.py. This module is designed for handling PerfCal objects, focusing on conversion and manipulation tasks. It features a range of utility functions and classes to process and manage profile data effectively. Key components include functions for string manipulation, a Context class for managing code environments, and comprehensive annotation handling capabilities. 
 
-## Usage [TODO]
+ - The `tla` folder contains the source code for converting the PerfCal to TLA+ code. The env.py in this folder is similar to the env.py in the go folder, serving as the core of the PerfCal-TLA+ Compiler. The main difference is that the env.py in the tla folder is designed for handling TLA+ objects. Currently, some code in tla/env.py may be redundant and can be merged with the code in go/env.py. We will continue to optimize the code in the future.
+  
+ - The `perfcal.lark` file is the grammar file of the PerfCal. It is used by the PerfCal tool to parse the PerfCal. The grammar file is written in [Lark](https://github.com/lark-parser/lark), a parsing library in Python. Grammer for PerfCal is modified from Python 3 grammar in Lark. Lark is licensed under MIT License (https://opensource.org/license/mit/)
+
+  - The `scripts` folder contains the scripts for data processing and running. The `scripts/run_test` contains part of the shell scripts for running the experiments. The `scripts/analysis` contains the Python scripts for analyzing the experiment results and generating statistics.
 
 ## License
 
