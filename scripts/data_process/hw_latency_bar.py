@@ -6,7 +6,6 @@ plt.rcParams.update({'font.size': 24})
 
 
 def process_log_files(paths):
-
     data = {}
     for fpath in paths:
         df = pd.read_csv(fpath, header=None, names=[
